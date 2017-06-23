@@ -7,8 +7,19 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+
+    <ion-item *ngFor="let contact of everybody | async">
+
+      <ion-icon item-start *ngIf="contact.phoneNumbers"
+        (click)="callContact(contact.phoneNumbers[0].value)"
+        ios="ios-call" md="md-call" tappable>
+      </ion-icon>
+
+      <ion-label>
+        {{contact.name.givenName}}
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
